@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useRef } from "react";
 import { styled } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -31,6 +31,7 @@ import TextField from "@mui/material/TextField";
 import Alert from "@mui/material/Alert";
 import Obfuscate from "react-obfuscate";
 import CallIcon from "@mui/icons-material/Call";
+import emailjs from '@emailjs/browser';
 import DcpCarousel from "../../components/DcpCarousel";
 import Hero from "../../components/Hero";
 import DcpPhoneInput from "../../components/DcpPhoneInput";
@@ -62,6 +63,7 @@ const defaultValues = {
 };
 
 export default function Home() {
+  const form = useRef();
   const theme = useTheme();
   const matchMedium = useMediaQuery(theme.breakpoints.down("md"));
   const matchSmall = useMediaQuery(theme.breakpoints.down("sm"));
@@ -99,20 +101,17 @@ export default function Home() {
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     setIsSubmitting(true);
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    };
-    fetch("/request/quotation", requestOptions)
+
+    emailjs.sendForm('service_nlbsp97', 'template_2236kay', form.current!, 'xgCnOh9MoKfiA4KDM')
       .then((response) => {
-        if (!response.ok) {
-          throw Error(response.statusText);
+        if (response.text !== "OK") {
+          throw Error(response.text);
         }
-        return response;
-      })
-      .then(() => {
         setSubmitted(true);
+        return response;
+      }, (error) => {
+        setSubmitted(false);
+        console.log(error.text);
       })
       .catch(() => {
         setSubmitted(false);
@@ -565,6 +564,7 @@ export default function Home() {
                 noValidate
                 autoComplete="off"
                 onSubmit={handleSubmit(onSubmit)}
+                ref={form}
               >
                 <Card>
                   <CardHeader

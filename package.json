@@ -1,8 +1,9 @@
 {
-  "name": "dada-clean-pfalz",
-  "version": "5.0.0",
+  "name": "my-project",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^3.7.0",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@mui/icons-material": "^5.0.0-rc.1",
@@ -13,20 +14,20 @@
     "express-validator": "^6.12.1",
     "history": "^5.0.1",
     "nodemailer": "^6.6.3",
-    "react": "latest",
-    "react-dom": "latest",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
     "react-hook-form": "^6.15.8",
     "react-obfuscate": "^3.6.8",
     "react-phone-number-input": "^3.1.26",
     "react-player": "^2.9.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "latest",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "^5.0.1",
     "react-scroll": "^1.8.3",
     "swiper": "^6.8.4",
-    "typescript": "latest"
+    "typescript": "^3.7.0"
   },
   "scripts": {
-    "start": "PORT=8080 react-scripts start",
+    "start": "cross-env PORT=8080 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -51,12 +52,16 @@
     ]
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.18.9",
+    "@babel/preset-react": "^7.18.6",
     "@types/material-ui": "^0.21.9",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
+    "@types/react": "^17.0.49",
+    "@types/react-dom": "^17.0.0",
     "@types/react-phone-number-input": "^3.0.11",
-    "@types/react-router-dom": "^5.1.9",
+    "@types/react-router-dom": "^5.3.3",
     "@types/react-scroll": "^1.8.3",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.32.0",
     "eslint-config-react-app": "^6.0.0"
   }
 }
